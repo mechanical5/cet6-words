@@ -1,6 +1,4 @@
-// 这是你的专属词库文件。
-// 想加新词，直接按格式复制粘贴即可。
-  const MY_WORDS = [
+const MY_WORDS = [
   { word: "abandon", phonetic: "/əˈbændən/", defCn: ["v. 放弃；抛弃；遗弃"], exampleEn: "He abandoned his plan to study abroad.", exampleCn: "他放弃了出国留学的计划。" },
   { word: "absorb", phonetic: "/əbˈzɔːb/", defCn: ["v. 吸收（液体、气体等）", "v. 理解；掌握（信息）"], exampleEn: "Plants absorb carbon dioxide from the air.", exampleCn: "植物从空气中吸收二氧化碳。" },
   { word: "abstract", phonetic: "/ˈæbstrækt/", defCn: ["adj. 抽象的；理论上的", "n. 摘要；概要"], exampleEn: "Beauty is an abstract concept.", exampleCn: "美是一个抽象的概念。" },
@@ -101,8 +99,8 @@
   { word: "motivate", phonetic: "/ˈməʊtɪveɪt/", defCn: ["v. 激励；激发"], exampleEn: "The teacher motivates the students.", exampleCn: "老师激励学生。" },
   { word: "negotiate", phonetic: "/nɪˈɡəʊʃieɪt/", defCn: ["v. 谈判；协商"], exampleEn: "We are negotiating a new contract.", exampleCn: "我们正在协商一份新合同。" },
   { word: "obtain", phonetic: "/əbˈteɪn/", defCn: ["v. 获得；得到"], exampleEn: "You need to obtain a visa.", exampleCn: "你需要获得签证。" },
-  { word: "occupy", phonetic: "/ˈɒkjupaɪ/", defCn: ["v. 占据；占领；占用"], exampleEn: "The army occupied the city.", exampleCn: "军队占领了城市。" }，
-      { word: "opportunity", phonetic: "/ˌɒpəˈtjuːnəti/", defCn: ["n. 机会；时机"], exampleEn: "This is a great opportunity to learn.", exampleCn: "这是一个很好的学习机会。" },
+  { word: "occupy", phonetic: "/ˈɒkjupaɪ/", defCn: ["v. 占据；占领；占用"], exampleEn: "The army occupied the city.", exampleCn: "军队占领了城市。" },
+  { word: "opportunity", phonetic: "/ˌɒpəˈtjuːnəti/", defCn: ["n. 机会；时机"], exampleEn: "This is a great opportunity to learn.", exampleCn: "这是一个很好的学习机会。" },
   { word: "optimize", phonetic: "/ˈɒptɪmaɪz/", defCn: ["v. 优化；充分利用"], exampleEn: "We need to optimize the process.", exampleCn: "我们需要优化流程。" },
   { word: "participate", phonetic: "/pɑːˈtɪsɪpeɪt/", defCn: ["v. 参加；参与"], exampleEn: "Everyone can participate in the game.", exampleCn: "每个人都可以参加这个游戏。" },
   { word: "perceive", phonetic: "/pəˈsiːv/", defCn: ["v. 察觉；感知；理解"], exampleEn: "I perceived a change in his tone.", exampleCn: "我察觉到他语气的变化。" },
@@ -164,11 +162,11 @@
   { word: "vital", phonetic: "/ˈvaɪtl/", defCn: ["adj. 至关重要的；生死攸关的"], exampleEn: "Water is vital for life.", exampleCn: "水对生命至关重要。" },
   { word: "welfare", phonetic: "/ˈwelfeə(r)/", defCn: ["n. 福利；幸福；社会救济"], exampleEn: "We care about animal welfare.", exampleCn: "我们关心动物福利。" },
   { word: "withdraw", phonetic: "/wɪðˈdrɔː/", defCn: ["v. 撤回；提取（钱）；退出"], exampleEn: "He withdrew money from the bank.", exampleCn: "他从银行取了钱。" },
-  { word: "withstand", phonetic: "/wɪðˈstænd/", defCn: ["v. 经受住；承受；抵挡"], exampleEn: "The bridge can withstand earthquakes.", exampleCn: "这座桥能抗震。" }，  { word: "accommodation", phonetic: "/əˌkɒməˈdeɪʃn/", defCn: ["n. 住宿；膳宿；和解"], exampleEn: "Hotel accommodation is included in the price.", exampleCn: "住宿包含在价格内。" },
+  { word: "withstand", phonetic: "/wɪðˈstænd/", defCn: ["v. 经受住；承受；抵挡"], exampleEn: "The bridge can withstand earthquakes.", exampleCn: "这座桥能抗震。" },
+  { word: "accommodation", phonetic: "/əˌkɒməˈdeɪʃn/", defCn: ["n. 住宿；膳宿；和解"], exampleEn: "Hotel accommodation is included in the price.", exampleCn: "住宿包含在价格内。" },
   { word: "accompany", phonetic: "/əˈkʌmpəni/", defCn: ["v. 陪伴；伴随；为…伴奏"], exampleEn: "I will accompany you to the station.", exampleCn: "我会陪你去车站。" },
   { word: "accomplish", phonetic: "/əˈkʌmplɪʃ/", defCn: ["v. 完成；实现；达到"], exampleEn: "We accomplished the task on time.", exampleCn: "我们按时完成了任务。" },
   { word: "account", phonetic: "/əˈkaʊnt/", defCn: ["n. 账户；描述", "v. 解释"], exampleEn: "I opened a bank account.", exampleCn: "我开了一个银行账户。" },
-  { word: "accumulate", phonetic: "/əˈkjuːmjəleɪt/", defCn: ["v. 积累；积聚；堆积"], exampleEn: "Wealth accumulated over time.", exampleCn: "财富随时间积累。" },
   { word: "accuse", phonetic: "/əˈkjuːz/", defCn: ["v. 指控；指责"], exampleEn: "He was accused of theft.", exampleCn: "他被指控盗窃。" },
   { word: "acknowledge", phonetic: "/əkˈnɒlɪdʒ/", defCn: ["v. 承认；致谢；确认收到"], exampleEn: "She acknowledged her mistake.", exampleCn: "她承认了错误。" },
   { word: "acquaintance", phonetic: "/əˈkweɪntəns/", defCn: ["n. 熟人；相识；了解"], exampleEn: "He is an old acquaintance of mine.", exampleCn: "他是我的一个老熟人。" },
@@ -177,7 +175,6 @@
   { word: "adhere", phonetic: "/ədˈhɪə(r)/", defCn: ["v. 坚持；遵守；黏附"], exampleEn: "You must adhere to the rules.", exampleCn: "你必须遵守规则。" },
   { word: "adjacent", phonetic: "/əˈdʒeɪsnt/", defCn: ["adj. 邻近的；毗连的"], exampleEn: "The hotel is adjacent to the beach.", exampleCn: "酒店紧邻海滩。" },
   { word: "adverse", phonetic: "/ˈædvɜːs/", defCn: ["adj. 不利的；有害的；相反的"], exampleEn: "The drug has adverse effects.", exampleCn: "这种药有副作用。" },
-  { word: "advocate", phonetic: "/ˈædvəkeɪt/", defCn: ["v. 提倡；主张", "n. 拥护者"], exampleEn: "She advocates for women's rights.", exampleCn: "她倡导女性权利。" },
   { word: "affiliate", phonetic: "/əˈfɪlieɪt/", defCn: ["v. 使隶属", "n. 附属机构"], exampleEn: "The hospital is affiliated with a university.", exampleCn: "这家医院隶属于一所大学。" },
   { word: "aggregate", phonetic: "/ˈæɡrɪɡət/", defCn: ["n. 总计；合计", "v. 聚集"], exampleEn: "The aggregate score was 3-1.", exampleCn: "总比分是3比1。" },
   { word: "aggressive", phonetic: "/əˈɡresɪv/", defCn: ["adj. 侵略的；好斗的；有进取心的"], exampleEn: "He has an aggressive personality.", exampleCn: "他性格好斗。" },
@@ -191,21 +188,18 @@
   { word: "amend", phonetic: "/əˈmend/", defCn: ["v. 修正；修改（法律等）"], exampleEn: "The law was amended.", exampleCn: "法律被修改了。" },
   { word: "ample", phonetic: "/ˈæmpl/", defCn: ["adj. 充足的；宽敞的"], exampleEn: "There is ample time.", exampleCn: "时间很充足。" },
   { word: "analogy", phonetic: "/əˈnælədʒi/", defCn: ["n. 类比；比喻"], exampleEn: "He drew an analogy between the two.", exampleCn: "他把两者进行了类比。" },
-  { word: "anticipate", phonetic: "/ænˈtɪsɪpeɪt/", defCn: ["v. 预期；预料；期盼"], exampleEn: "We anticipate a large crowd.", exampleCn: "我们预计人会很多。" },
   { word: "apparatus", phonetic: "/ˌæpəˈreɪtəs/", defCn: ["n. 仪器；设备；机构"], exampleEn: "The lab has modern apparatus.", exampleCn: "实验室有现代仪器。" },
   { word: "applause", phonetic: "/əˈplɔːz/", defCn: ["n. 掌声；喝彩"], exampleEn: "The audience gave him applause.", exampleCn: "观众给了他掌声。" },
   { word: "appliance", phonetic: "/əˈplaɪəns/", defCn: ["n. 家用电器；器具"], exampleEn: "Kitchen appliances are expensive.", exampleCn: "厨房电器很贵。" },
   { word: "applicable", phonetic: "/əˈplɪkəbl/", defCn: ["adj. 适用的；可应用的"], exampleEn: "This rule is applicable to everyone.", exampleCn: "这条规则适用于所有人。" },
   { word: "appoint", phonetic: "/əˈpɔɪnt/", defCn: ["v. 任命；约定"], exampleEn: "He was appointed as manager.", exampleCn: "他被任命为经理。" },
   { word: "appraisal", phonetic: "/əˈpreɪzl/", defCn: ["n. 评价；评估"], exampleEn: "We conduct an annual appraisal.", exampleCn: "我们进行年度评估。" },
-  { word: "arbitrary", phonetic: "/ˈɑːbɪtrəri/", defCn: ["adj. 任意的；武断的；专横的"], exampleEn: "The decision was arbitrary.", exampleCn: "这个决定很武断。" },
   { word: "articulate", phonetic: "/ɑːˈtɪkjuleɪt/", defCn: ["v. 清晰地表达", "adj. 口齿伶俐的"], exampleEn: "She articulated her thoughts clearly.", exampleCn: "她清晰地表达了她的想法。" },
   { word: "ascertain", phonetic: "/ˌæsəˈteɪn/", defCn: ["v. 查明；确定"], exampleEn: "We need to ascertain the facts.", exampleCn: "我们需要查明事实。" },
   { word: "aspiration", phonetic: "/ˌæspəˈreɪʃn/", defCn: ["n. 渴望；抱负"], exampleEn: "His aspiration is to travel the world.", exampleCn: "他的抱负是环游世界。" },
   { word: "assemble", phonetic: "/əˈsembl/", defCn: ["v. 集合；装配；聚集"], exampleEn: "The crowd assembled in the square.", exampleCn: "人群在广场集合。" },
   { word: "assert", phonetic: "/əˈsɜːt/", defCn: ["v. 断言；主张；维护"], exampleEn: "She asserted her innocence.", exampleCn: "她坚称自己无辜。" },
   { word: "asset", phonetic: "/ˈæset/", defCn: ["n. 资产；财富；优点"], exampleEn: "Knowledge is a valuable asset.", exampleCn: "知识是宝贵的财富。" },
-  { word: "assign", phonetic: "/əˈsaɪn/", defCn: ["v. 分配；指派；布置"], exampleEn: "The teacher assigned us homework.", exampleCn: "老师给我们布置了作业。" },
   { word: "assimilate", phonetic: "/əˈsɪməleɪt/", defCn: ["v. 吸收；同化；理解"], exampleEn: "It takes time to assimilate new ideas.", exampleCn: "吸收新思想需要时间。" },
   { word: "assumption", phonetic: "/əˈsʌmpʃn/", defCn: ["n. 假设；假定"], exampleEn: "The assumption was proved wrong.", exampleCn: "这个假设被证明是错误的。" },
   { word: "assure", phonetic: "/əˈʃʊə(r)/", defCn: ["v. 保证；使确信"], exampleEn: "I assure you it will be fine.", exampleCn: "我向你保证会没事的。" },
@@ -231,7 +225,6 @@
   { word: "bleak", phonetic: "/bliːk/", defCn: ["adj. 荒凉的；阴冷的；无望的"], exampleEn: "The future looks bleak.", exampleCn: "未来看起来毫无希望。" },
   { word: "blend", phonetic: "/blend/", defCn: ["v. 混合；融合", "n. 混合物"], exampleEn: "Blend the ingredients together.", exampleCn: "把原料混合在一起。" },
   { word: "blunder", phonetic: "/ˈblʌndə(r)/", defCn: ["n. 大错", "v. 犯大错；跌跌撞撞地走"], exampleEn: "He made a serious blunder.", exampleCn: "他犯了一个严重的错误。" },
-  { word: "boost", phonetic: "/buːst/", defCn: ["v. 提升；促进；增加", "n. 推动"], exampleEn: "The good news boosted his morale.", exampleCn: "好消息提振了他的士气。" },
   { word: "bounce", phonetic: "/baʊns/", defCn: ["v. 弹跳；反弹", "n. 弹力"], exampleEn: "The ball bounced off the wall.", exampleCn: "球从墙上弹了回来。" },
   { word: "boundary", phonetic: "/ˈbaʊndri/", defCn: ["n. 边界；界限"], exampleEn: "The river forms the boundary.", exampleCn: "这条河形成了边界。" },
   { word: "breach", phonetic: "/briːtʃ/", defCn: ["n. 破坏；违反；缺口", "v. 违反"], exampleEn: "This is a breach of contract.", exampleCn: "这是违约行为。" },
@@ -262,5 +255,4 @@
   { word: "cancel", phonetic: "/ˈkænsl/", defCn: ["v. 取消；废除"], exampleEn: "The flight was cancelled.", exampleCn: "航班被取消了。" },
   { word: "candidate", phonetic: "/ˈkændɪdət/", defCn: ["n. 候选人；申请人；考生"], exampleEn: "He is a candidate for the job.", exampleCn: "他是这份工作的候选人。" },
   { word: "capability", phonetic: "/ˌkeɪpəˈbɪləti/", defCn: ["n. 能力；才能；性能"], exampleEn: "The new phone has new capabilities.", exampleCn: "新手机有新的功能。" }
-];// 在这里继续往下加...
 ];
