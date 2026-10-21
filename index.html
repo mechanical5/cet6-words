@@ -273,7 +273,7 @@ function loadState() {
 function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
 
 /* ========== 获取词库 ========== */
-const JSON_URL = "https://raw.githubusercontent.com/Pleniluner/English-vocabulary/main/json_original/json-sentence/CET6_1.json";
+const JSON_URL = "https://raw.gitmirror.com/Pleniluner/English-vocabulary/main/json_original/json-sentence/CET6_1.json";
 
 async function fetchWords() {
   const loadingView = document.getElementById("loadingView");
