@@ -12,7 +12,7 @@
     display: flex; justify-content: center;
     min-height: 100vh; padding: 20px;
   }
-  .app { width: 100%; max-width: 520px; display: flex; flex-direction: column; }
+  .app { width: 100%; max-width: 520px; display: flex; flex-direction: column; height: 95vh; }
 
   .topbar {
     display: flex; justify-content: space-between; align-items: center;
@@ -28,19 +28,15 @@
   .card {
     flex: 1; display: flex; flex-direction: column;
     align-items: center; justify-content: center;
-    text-align: center; padding: 32px 16px;
-    min-height: 60vh;
-    position: relative;
+    text-align: center; padding: 20px 16px;
+    position: relative; overflow-y: auto;
   }
 
   .word-row {
     display: flex; align-items: center; justify-content: center;
     gap: 14px; margin-bottom: 8px; flex-wrap: wrap;
   }
-  .word {
-    font-size: 42px; font-weight: 600; letter-spacing: .5px;
-    word-break: break-word;
-  }
+  .word { font-size: 42px; font-weight: 600; letter-spacing: .5px; word-break: break-word; }
   .speak-btn {
     background: none; border: 1px solid #e0e0e0; border-radius: 50%;
     width: 40px; height: 40px; font-size: 18px; cursor: pointer;
@@ -50,47 +46,22 @@
   .speak-btn:hover { border-color: #999; background: #f5f5f5; }
   .speak-btn:active { transform: scale(.92); }
 
-  .phonetic {
-    font-size: 17px; color: #888; margin-bottom: 28px;
-    font-family: "Times New Roman", serif;
-  }
+  .phonetic { font-size: 17px; color: #888; margin-bottom: 28px; font-family: "Times New Roman", serif; }
 
-  .details {
-    width: 100%; text-align: left;
-    opacity: 0; transition: opacity .25s;
-  }
-  .revealed .details { opacity: 1; }
+  .details { width: 100%; text-align: left; opacity: 0; transition: opacity .25s; display: none; }
+  .revealed .details { opacity: 1; display: block; }
 
   .section { margin-bottom: 18px; }
-  .section-title {
-    font-size: 12px; color: #bbb; text-transform: uppercase;
-    letter-spacing: 1px; margin-bottom: 6px;
-  }
-  .def-en {
-    font-size: 15px; color: #555; line-height: 1.55;
-    margin-bottom: 4px;
-  }
-  .def-cn {
-    font-size: 16px; color: #222; line-height: 1.55;
-    margin-bottom: 4px;
-  }
-  .synonyms {
-    font-size: 15px; color: #666; line-height: 1.6;
-  }
-  .example-en {
-    font-size: 15px; color: #333; line-height: 1.6;
-    font-style: italic; margin-bottom: 4px;
-  }
-  .example-cn {
-    font-size: 14px; color: #999; line-height: 1.5;
-  }
+  .section-title { font-size: 12px; color: #bbb; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .def-en { font-size: 15px; color: #555; line-height: 1.55; margin-bottom: 4px; }
+  .def-cn { font-size: 16px; color: #222; line-height: 1.55; margin-bottom: 4px; }
+  .synonyms { font-size: 15px; color: #666; line-height: 1.6; }
+  .example-en { font-size: 15px; color: #333; line-height: 1.6; font-style: italic; margin-bottom: 4px; }
+  .example-cn { font-size: 14px; color: #999; line-height: 1.5; }
 
-  .hint {
-    font-size: 14px; color: #ccc; margin-top: 20px;
-  }
+  .hint { font-size: 14px; color: #ccc; margin-top: 20px; }
   .revealed .hint { display: none; }
 
-  /* 底部导航 */
   .nav { display: flex; gap: 12px; padding: 16px 4px; }
   .nav button {
     flex: 1; padding: 14px; border: 1px solid #e0e0e0;
@@ -100,19 +71,14 @@
   .nav button:hover { border-color: #bbb; }
   .nav button:disabled { opacity: .35; cursor: default; }
   
-  /* 熟词按钮 */
   .master-btn {
-    margin-top: 24px;
-    padding: 10px 20px; border: 1px solid #4caf50;
-    background: #fff; color: #4caf50; border-radius: 20px;
-    font-size: 14px; cursor: pointer; transition: all .2s;
-    display: inline-block;
+    margin-top: 10px; margin-bottom: 20px; padding: 10px 20px; border: 1px solid #4caf50;
+    background: #fff; color: #4caf50; border-radius: 20px; font-size: 14px; cursor: pointer;
+    transition: all .2s; display: inline-block;
   }
   .master-btn:hover { background: #4caf50; color: #fff; }
 
-  /* 列表页通用 */
-  .list-title { font-size: 20px; font-weight: 600; padding: 8px 4px 20px; }
-  .group-list { flex: 1; overflow-y: auto; }
+  .group-list { flex: 1; overflow-y: auto; padding-right: 4px; }
   .group-item {
     display: flex; justify-content: space-between; align-items: center;
     padding: 16px; background: #fff; border-radius: 10px;
@@ -124,8 +90,7 @@
   .group-item .meta { font-size: 13px; color: #999; }
   .group-item .done { color: #4caf50; font-size: 18px; }
 
-  /* 设置页 */
-  .settings { flex: 1; }
+  .settings { flex: 1; overflow-y: auto; }
   .setting-row {
     display: flex; justify-content: space-between; align-items: center;
     padding: 18px 4px; border-bottom: 1px solid #eee;
@@ -136,7 +101,6 @@
     border-radius: 8px; background: #fff;
   }
 
-  /* 开关样式 */
   .switch { position: relative; display: inline-block; width: 48px; height: 28px; }
   .switch input { opacity: 0; width: 0; height: 0; }
   .slider {
@@ -144,8 +108,7 @@
     background: #ccc; border-radius: 28px; transition: .2s;
   }
   .slider:before {
-    position: absolute; content: "";
-    height: 22px; width: 22px; left: 3px; bottom: 3px;
+    position: absolute; content: ""; height: 22px; width: 22px; left: 3px; bottom: 3px;
     background: #fff; border-radius: 50%; transition: .2s;
   }
   .switch input:checked + .slider { background: #222; }
@@ -159,13 +122,13 @@
   .danger-btn:hover { background: #fff5f5; }
 
   .hidden { display: none !important; }
+  .loading { font-size: 16px; color: #888; text-align: center; padding: 40px; }
 </style>
 </head>
 <body>
 <div class="app">
 
-  <!-- 学习页 -->
-  <div id="studyView">
+  <div id="studyView" style="display:flex; flex-direction:column; height:100%;">
     <div class="topbar">
       <span id="dayLabel"></span>
       <span class="right">
@@ -174,7 +137,12 @@
         <button onclick="showSettings()">设置</button>
       </span>
     </div>
-    <div class="card" id="card" onclick="reveal()">
+    
+    <div id="loadingView" class="loading" style="display:none; flex:1; align-items:center; justify-content:center;">
+      <div>正在从 GitHub 获取海量词库...<br><br>（国内网络可能稍慢，请耐心等待几秒）</div>
+    </div>
+
+    <div class="card" id="card" onclick="reveal()" style="display:none;">
       <div class="word-row" onclick="event.stopPropagation()">
         <div class="word" id="word"></div>
         <button class="speak-btn" onclick="speakWord()" title="朗读单词">🔊</button>
@@ -182,37 +150,27 @@
       <div class="phonetic" id="phonetic"></div>
       <div class="details" id="details">
         <div class="section">
-          <div class="section-title">牛津释义</div>
-          <div id="defEn"></div>
-        </div>
-        <div class="section">
           <div class="section-title">中文翻译</div>
           <div id="defCn"></div>
-        </div>
-        <div class="section">
-          <div class="section-title">六级同义词</div>
-          <div class="synonyms" id="synonyms"></div>
         </div>
         <div class="section">
           <div class="section-title">例句</div>
           <div class="example-en" id="exampleEn"></div>
           <div class="example-cn" id="exampleCn"></div>
         </div>
-        <!-- 标为熟词按钮（展开后显示） -->
         <div style="text-align: center;">
           <button class="master-btn" onclick="event.stopPropagation(); markMastered()">✓ 我已经完全掌握了</button>
         </div>
       </div>
       <div class="hint">点击显示详情</div>
     </div>
-    <div class="nav">
+    <div class="nav" id="studyNav" style="display:none;">
       <button id="prevBtn" onclick="prevWord()">‹ 上一个</button>
       <button id="nextBtn" onclick="nextWord()">下一个 ›</button>
     </div>
   </div>
 
-  <!-- 分组页 -->
-  <div id="listView" class="hidden">
+  <div id="listView" class="hidden" style="display:flex; flex-direction:column; height:100%;">
     <div class="topbar">
       <span>所有分组</span>
       <button onclick="showStudy()">返回</button>
@@ -220,19 +178,15 @@
     <div class="group-list" id="groupList"></div>
   </div>
 
-  <!-- 熟词区页 -->
-  <div id="masteredView" class="hidden">
+  <div id="masteredView" class="hidden" style="display:flex; flex-direction:column; height:100%;">
     <div class="topbar">
       <span>熟词区（已掌握）</span>
       <button onclick="showStudy()">返回</button>
     </div>
-    <div class="group-list" id="masteredList">
-      <!-- 动态生成 -->
-    </div>
+    <div class="group-list" id="masteredList"></div>
   </div>
 
-  <!-- 设置页 -->
-  <div id="settingsView" class="hidden">
+  <div id="settingsView" class="hidden" style="display:flex; flex-direction:column; height:100%;">
     <div class="topbar">
       <span>设置</span>
       <button onclick="showStudy()">返回</button>
@@ -242,10 +196,11 @@
         <label>每天单词数</label>
         <select id="dailySelect" onchange="changeDaily(this.value)">
           <option value="10">10</option>
-          <option value="15">15</option>
           <option value="20">20</option>
-          <option value="30">30</option>
           <option value="50">50</option>
+          <option value="100">100</option>
+          <option value="200">200</option>
+          <option value="500">500 (极速)</option>
         </select>
       </div>
       <div class="setting-row">
@@ -275,465 +230,10 @@
 </div>
 
 <script>
-/* ========== 词库（按字母顺序排列，可自行添加） ========== */
-const WORDS = [
-  {
-    word: "abandon",
-    phonetic: "/əˈbændən/",
-    defEn: [
-      "to leave somebody/something that you are responsible for",
-      "to stop doing something before it is finished"
-    ],
-    defCn: ["v. 抛弃；遗弃", "v. 放弃；中止"],
-    synonyms: "desert, forsake, give up, quit",
-    exampleEn: "He abandoned his plan to study abroad.",
-    exampleCn: "他放弃了出国留学的计划。"
-  },
-  {
-    word: "absorb",
-    phonetic: "/əbˈzɔːb/",
-    defEn: ["to take in a liquid, gas or other substance", "to take in and understand information"],
-    defCn: ["v. 吸收（液体、气体等）", "v. 理解；掌握（信息）"],
-    synonyms: "soak up, take in, assimilate, digest",
-    exampleEn: "Plants absorb carbon dioxide from the air.",
-    exampleCn: "植物从空气中吸收二氧化碳。"
-  },
-  {
-    word: "abstract",
-    phonetic: "/ˈæbstrækt/",
-    defEn: ["based on general ideas rather than on real things or events", "a short piece of writing containing the main ideas of a document"],
-    defCn: ["adj. 抽象的；理论上的", "n. 摘要；概要"],
-    synonyms: "theoretical, conceptual, summary, synopsis",
-    exampleEn: "Beauty is an abstract concept that is hard to define.",
-    exampleCn: "美是一个难以定义的抽象概念。"
-  },
-  {
-    word: "abundant",
-    phonetic: "/əˈbʌndənt/",
-    defEn: ["existing in large quantities; more than enough"],
-    defCn: ["adj. 丰富的；充裕的"],
-    synonyms: "plentiful, ample, rich, copious",
-    exampleEn: "The region has abundant natural resources.",
-    exampleCn: "该地区拥有丰富的自然资源。"
-  },
-  {
-    word: "accelerate",
-    phonetic: "/əkˈseləreɪt/",
-    defEn: ["to go faster", "to make something happen sooner or more quickly"],
-    defCn: ["v. 加速；加快", "v. 促进；使早日发生"],
-    synonyms: "speed up, hasten, quicken, expedite",
-    exampleEn: "The car accelerated smoothly onto the highway.",
-    exampleCn: "汽车平稳地加速驶上高速公路。"
-  },
-  {
-    word: "accommodate",
-    phonetic: "/əˈkɒmədeɪt/",
-    defEn: ["to provide somebody with a place to live or stay", "to consider something and try to meet its demands"],
-    defCn: ["v. 为…提供住宿；容纳", "v. 顾及；适应"],
-    synonyms: "house, lodge, hold, adapt to",
-    exampleEn: "The hotel can accommodate up to 500 guests.",
-    exampleCn: "这家酒店最多可容纳500位客人。"
-  },
-  {
-    word: "accumulate",
-    phonetic: "/əˈkjuːmjəleɪt/",
-    defEn: ["to gradually get more and more of something over a period of time"],
-    defCn: ["v. 积累；积聚"],
-    synonyms: "gather, collect, build up, amass",
-    exampleEn: "Dust had accumulated on the shelves over the years.",
-    exampleCn: "多年来书架上积满了灰尘。"
-  },
-  {
-    word: "accurate",
-    phonetic: "/ˈækjərət/",
-    defEn: ["correct and true in every detail"],
-    defCn: ["adj. 准确的；精确的"],
-    synonyms: "precise, exact, correct, faithful",
-    exampleEn: "The report gives an accurate description of the accident.",
-    exampleCn: "这份报告对事故做了准确的描述。"
-  },
-  {
-    word: "acquire",
-    phonetic: "/əˈkwaɪə(r)/",
-    defEn: ["to gain something by your own efforts, ability or behaviour", "to obtain something by buying or being given it"],
-    defCn: ["v. 获得；学到（知识、技能等）", "v. 购得；取得"],
-    synonyms: "obtain, gain, attain, secure",
-    exampleEn: "She acquired a good knowledge of English through years of practice.",
-    exampleCn: "通过多年练习，她掌握了很好的英语知识。"
-  },
-  {
-    word: "adapt",
-    phonetic: "/əˈdæpt/",
-    defEn: ["to change your behaviour in order to deal more successfully with a new situation", "to change a book or play so that it can be made into a film"],
-    defCn: ["v. 适应（新情况）", "v. 改编（书、剧本等）"],
-    synonyms: "adjust, acclimatize, modify, convert",
-    exampleEn: "It takes time to adapt to a new environment.",
-    exampleCn: "适应新环境需要时间。"
-  },
-  {
-    word: "adequate",
-    phonetic: "/ˈædɪkwət/",
-    defEn: ["enough in quantity, or good enough in quality, for a particular purpose or need"],
-    defCn: ["adj. 足够的；适当的；胜任的"],
-    synonyms: "sufficient, enough, satisfactory, competent",
-    exampleEn: "The room is adequate for two people.",
-    exampleCn: "这个房间住两个人足够了。"
-  },
-  {
-    word: "adjust",
-    phonetic: "/əˈdʒʌst/",
-    defEn: ["to change something slightly, especially to make it more correct or suitable", "to get used to a new situation by changing your behaviour"],
-    defCn: ["v. 调整；调节", "v. 适应"],
-    synonyms: "alter, modify, adapt, regulate",
-    exampleEn: "You can adjust the seat height to suit your needs.",
-    exampleCn: "你可以根据需要调整座椅高度。"
-  },
-  {
-    word: "advocate",
-    phonetic: "/ˈædvəkeɪt/",
-    defEn: ["to support something publicly", "a person who supports or speaks in favour of somebody/something"],
-    defCn: ["v. 提倡；拥护", "n. 拥护者；倡导者"],
-    synonyms: "support, promote, champion, proponent",
-    exampleEn: "He advocates a healthy lifestyle and regular exercise.",
-    exampleCn: "他提倡健康的生活方式和规律锻炼。"
-  },
-  {
-    word: "aesthetic",
-    phonetic: "/iːsˈθetɪk/",
-    defEn: ["connected with beauty and the study of beauty"],
-    defCn: ["adj. 审美的；美学的；艺术的"],
-    synonyms: "artistic, tasteful, beautiful, elegant",
-    exampleEn: "The building has great aesthetic value as well as practical use.",
-    exampleCn: "这座建筑既有实用价值，也有很高的审美价值。"
-  },
-  {
-    word: "ambiguous",
-    phonetic: "/æmˈbɪɡjuəs/",
-    defEn: ["that can be understood in more than one way; having different meanings"],
-    defCn: ["adj. 模棱两可的；含糊不清的"],
-    synonyms: "vague, unclear, equivocal, obscure",
-    exampleEn: "His answer was deliberately ambiguous.",
-    exampleCn: "他的回答故意含糊其辞。"
-  },
-  {
-    word: "anticipate",
-    phonetic: "/ænˈtɪsɪpeɪt/",
-    defEn: ["to expect something to happen", "to see what might happen in the future and take action"],
-    defCn: ["v. 预期；预料", "v. 预先准备；预先处理"],
-    synonyms: "expect, foresee, predict, await",
-    exampleEn: "We anticipate a rise in prices next year.",
-    exampleCn: "我们预计明年物价会上涨。"
-  },
-  {
-    word: "apparent",
-    phonetic: "/əˈpærənt/",
-    defEn: ["easy to see or understand", "that seems to be true but may not be"],
-    defCn: ["adj. 明显的；显而易见的", "adj. 表面上的；貌似的"],
-    synonyms: "obvious, evident, clear, seeming",
-    exampleEn: "It was apparent that she was unhappy with the result.",
-    exampleCn: "很明显，她对结果不满意。"
-  },
-  {
-    word: "appeal",
-    phonetic: "/əˈpiːl/",
-    defEn: ["to make a serious request for something you need", "to attract or interest somebody"],
-    defCn: ["v. 呼吁；恳求", "v. 有吸引力；引起兴趣"],
-    synonyms: "request, plead, attract, fascination",
-    exampleEn: "The design appeals to young people.",
-    exampleCn: "这个设计对年轻人很有吸引力。"
-  },
-  {
-    word: "appreciate",
-    phonetic: "/əˈpriːʃieɪt/",
-    defEn: ["to recognize the good qualities of somebody/something", "to be grateful for something"],
-    defCn: ["v. 欣赏；赏识", "v. 感激；感谢"],
-    synonyms: "value, treasure, be grateful for, understand",
-    exampleEn: "I really appreciate your help with the project.",
-    exampleCn: "我非常感激你在这个项目上的帮助。"
-  },
-  {
-    word: "approach",
-    phonetic: "/əˈprəʊtʃ/",
-    defEn: ["a way of dealing with somebody/something", "to come near to somebody/something in distance or time"],
-    defCn: ["n. 方法；途径", "v. 接近；靠近"],
-    synonyms: "method, way, strategy, come near",
-    exampleEn: "We need a new approach to this problem.",
-    exampleCn: "我们需要用新方法来解决这个问题。"
-  },
-  {
-    word: "appropriate",
-    phonetic: "/əˈprəʊpriət/",
-    defEn: ["suitable, acceptable or correct for the particular circumstances"],
-    defCn: ["adj. 适当的；恰当的；合适的"],
-    synonyms: "suitable, proper, fitting, apt",
-    exampleEn: "Wear clothes appropriate for the occasion.",
-    exampleCn: "穿适合该场合的衣服。"
-  },
-  {
-    word: "arbitrary",
-    phonetic: "/ˈɑːbɪtrəri/",
-    defEn: ["not based on reason or system; decided by chance or personal whim"],
-    defCn: ["adj. 任意的；武断的；随意的"],
-    synonyms: "random, capricious, subjective, unreasonable",
-    exampleEn: "The decision seemed completely arbitrary.",
-    exampleCn: "这个决定看起来完全是武断的。"
-  },
-  {
-    word: "assess",
-    phonetic: "/əˈses/",
-    defEn: ["to make a judgement about the nature or quality of somebody/something"],
-    defCn: ["v. 评估；评定；估价"],
-    synonyms: "evaluate, judge, estimate, appraise",
-    exampleEn: "We need to assess the risks involved in the project.",
-    exampleCn: "我们需要评估这个项目涉及的风险。"
-  },
-  {
-    word: "assign",
-    phonetic: "/əˈsaɪn/",
-    defEn: ["to give somebody something that they can use, or some work", "to provide a person for a particular task"],
-    defCn: ["v. 分配；分派（任务）", "v. 指派；委派"],
-    synonyms: "allocate, allot, appoint, designate",
-    exampleEn: "The teacher assigned us a group project.",
-    exampleCn: "老师给我们布置了一个小组项目。"
-  },
-  {
-    word: "assume",
-    phonetic: "/əˈsjuːm/",
-    defEn: ["to think or accept that something is true but without having proof", "to take or begin to have power or responsibility"],
-    defCn: ["v. 假定；假设", "v. 承担（责任）；就任"],
-    synonyms: "presume, suppose, take on, undertake",
-    exampleEn: "I assume you have read the report.",
-    exampleCn: "我假设你已经读过这份报告了。"
-  },
-  {
-    word: "attribute",
-    phonetic: "/əˈtrɪbjuːt/",
-    defEn: ["to say or believe that something is the result of a particular thing", "a quality or feature of somebody/something"],
-    defCn: ["v. 把…归因于", "n. 属性；特质"],
-    synonyms: "ascribe, credit, quality, characteristic",
-    exampleEn: "She attributes her success to hard work and luck.",
-    exampleCn: "她把成功归因于努力和运气。"
-  },
-  {
-    word: "authority",
-    phonetic: "/ɔːˈθɒrəti/",
-    defEn: ["the power to give orders to people", "the people or an organization who have the power", "a person with special knowledge"],
-    defCn: ["n. 权力；权威", "n. 当局；官方", "n. 权威人士；专家"],
-    synonyms: "power, control, officialdom, expert",
-    exampleEn: "The local authority is responsible for maintaining the roads.",
-    exampleCn: "地方当局负责维护道路。"
-  },
-  {
-    word: "available",
-    phonetic: "/əˈveɪləbl/",
-    defEn: ["that you can get, buy or find", "free to see or talk to people"],
-    defCn: ["adj. 可获得的；可用的", "adj. 有空的"],
-    synonyms: "accessible, obtainable, free, vacant",
-    exampleEn: "Tickets are available at the box office.",
-    exampleCn: "售票处有票出售。"
-  },
-  {
-    word: "aware",
-    phonetic: "/əˈweə(r)/",
-    defEn: ["knowing or realizing something"],
-    defCn: ["adj. 意识到的；知道的"],
-    synonyms: "conscious, mindful, cognizant, informed",
-    exampleEn: "Are you aware of the new rules?",
-    exampleCn: "你知道新规定吗？"
-  },
-  {
-    word: "benefit",
-    phonetic: "/ˈbenɪfɪt/",
-    defEn: ["an advantage that something gives you", "to be useful to somebody or improve their life"],
-    defCn: ["n. 好处；益处", "v. 有益于；受益"],
-    synonyms: "advantage, profit, gain, help",
-    exampleEn: "Regular exercise benefits your health.",
-    exampleCn: "规律锻炼有益健康。"
-  },
-  {
-    word: "capable",
-    phonetic: "/ˈkeɪpəbl/",
-    defEn: ["having the ability or qualities necessary for doing something"],
-    defCn: ["adj. 有能力的；能干的"],
-    synonyms: "able, competent, skilled, proficient",
-    exampleEn: "She is capable of handling the task alone.",
-    exampleCn: "她有能力独自完成这项任务。"
-  },
-  {
-    word: "capacity",
-    phonetic: "/kəˈpæsəti/",
-    defEn: ["the number of things or people that a container can hold", "the ability to understand or to do something"],
-    defCn: ["n. 容量；容纳能力", "n. 能力；才能"],
-    synonyms: "volume, size, ability, capability",
-    exampleEn: "The stadium has a capacity of 80,000.",
-    exampleCn: "这座体育场可容纳8万人。"
-  },
-  {
-    word: "cease",
-    phonetic: "/siːs/",
-    defEn: ["to stop doing something; to end"],
-    defCn: ["v. 停止；终止"],
-    synonyms: "stop, end, halt, discontinue",
-    exampleEn: "The company ceased operations last year.",
-    exampleCn: "这家公司去年停止运营了。"
-  },
-  {
-    word: "circumstance",
-    phonetic: "/ˈsɜːkəmstəns/",
-    defEn: ["the conditions and facts that are connected with and affect a situation"],
-    defCn: ["n. 情况；环境；条件"],
-    synonyms: "situation, condition, context, factors",
-    exampleEn: "Under no circumstances should you give up.",
-    exampleCn: "在任何情况下你都不应该放弃。"
-  },
-  {
-    word: "coherent",
-    phonetic: "/kəʊˈhɪərənt/",
-    defEn: ["logical and well organized; easy to understand"],
-    defCn: ["adj. 连贯的；有条理的；一致的"],
-    synonyms: "logical, consistent, rational, clear",
-    exampleEn: "She gave a coherent explanation of the problem.",
-    exampleCn: "她对问题做出了条理清晰的解释。"
-  },
-  {
-    word: "commit",
-    phonetic: "/kəˈmɪt/",
-    defEn: ["to do something wrong or illegal", "to promise sincerely that you will do something", "to give all your attention to one thing"],
-    defCn: ["v. 犯（罪）；做（错事）", "v. 承诺；保证", "v. 投入；致力于"],
-    synonyms: "perpetrate, pledge, devote, dedicate",
-    exampleEn: "He committed himself to the project for two years.",
-    exampleCn: "他为这个项目投入了两年时间。"
-  },
-  {
-    word: "compensate",
-    phonetic: "/ˈkɒmpenseɪt/",
-    defEn: ["to provide something good as a balance against something bad", "to pay somebody money because they have suffered loss"],
-    defCn: ["v. 补偿；弥补", "v. 赔偿"],
-    synonyms: "make up for, offset, reimburse, repay",
-    exampleEn: "Nothing can compensate for the loss of a loved one.",
-    exampleCn: "失去挚爱之人是任何东西都无法弥补的。"
-  },
-  {
-    word: "competent",
-    phonetic: "/ˈkɒmpɪtənt/",
-    defEn: ["having enough skill or knowledge to do something well"],
-    defCn: ["adj. 有能力的；胜任的；称职的"],
-    synonyms: "capable, qualified, skilled, proficient",
-    exampleEn: "She is a highly competent manager.",
-    exampleCn: "她是一位非常称职的管理者。"
-  },
-  {
-    word: "comprehensive",
-    phonetic: "/ˌkɒmprɪˈhensɪv/",
-    defEn: ["including all, or almost all, the items, details, facts, etc."],
-    defCn: ["adj. 全面的；综合的；广泛的"],
-    synonyms: "complete, thorough, extensive, full",
-    exampleEn: "The book offers a comprehensive overview of the subject.",
-    exampleCn: "这本书对该主题做了全面的概述。"
-  },
-  {
-    word: "conceive",
-    phonetic: "/kənˈsiːv/",
-    defEn: ["to form an idea or a plan in your mind", "to become pregnant"],
-    defCn: ["v. 构想；设想；想出", "v. 怀孕"],
-    synonyms: "imagine, devise, formulate, think up",
-    exampleEn: "I can't conceive of living without music.",
-    exampleCn: "我无法想象没有音乐的生活。"
-  },
-  {
-    word: "confront",
-    phonetic: "/kənˈfrʌnt/",
-    defEn: ["to face a problem or a difficult situation and try to deal with it", "to face somebody in a threatening way"],
-    defCn: ["v. 面对；正视（问题）", "v. 对抗；对峙"],
-    synonyms: "face, tackle, challenge, oppose",
-    exampleEn: "We must confront the problem directly.",
-    exampleCn: "我们必须直接面对这个问题。"
-  },
-  {
-    word: "consequence",
-    phonetic: "/ˈkɒnsɪkwəns/",
-    defEn: ["a result of something that has happened, especially an unpleasant one"],
-    defCn: ["n. 结果；后果"],
-    synonyms: "result, outcome, effect, repercussion",
-    exampleEn: "He was late, and as a consequence missed the train.",
-    exampleCn: "他迟到了，结果错过了火车。"
-  },
-  {
-    word: "considerable",
-    phonetic: "/kənˈsɪdərəbl/",
-    defEn: ["great in amount, size, importance or degree"],
-    defCn: ["adj. 相当大的；重要的；可观的"],
-    synonyms: "substantial, significant, sizeable, notable",
-    exampleEn: "The project required considerable effort and time.",
-    exampleCn: "这个项目需要相当多的努力和时间。"
-  },
-  {
-    word: "consistent",
-    phonetic: "/kənˈsɪstənt/",
-    defEn: ["always behaving or happening in a similar way", "in agreement with something"],
-    defCn: ["adj. 一贯的；始终如一的", "adj. 一致的；相符的"],
-    synonyms: "steady, reliable, coherent, compatible",
-    exampleEn: "Her work is consistently excellent.",
-    exampleCn: "她的工作始终出色。"
-  },
-  {
-    word: "constitute",
-    phonetic: "/ˈkɒnstɪtjuːt/",
-    defEn: ["to be considered to be something", "to be the parts that together form something"],
-    defCn: ["v. 被视为；算作", "v. 构成；组成"],
-    synonyms: "form, compose, make up, amount to",
-    exampleEn: "Women constitute half of the workforce.",
-    exampleCn: "女性占劳动力的一半。"
-  },
-  {
-    word: "contemporary",
-    phonetic: "/kənˈtemprəri/",
-    defEn: ["belonging to the present time; modern", "belonging to the same time as somebody/something"],
-    defCn: ["adj. 当代的；现代的", "adj. 同时代的"],
-    synonyms: "modern, current, present-day, concurrent",
-    exampleEn: "The museum focuses on contemporary art.",
-    exampleCn: "这家博物馆专注于当代艺术。"
-  },
-  {
-    word: "contribute",
-    phonetic: "/kənˈtrɪbjuːt/",
-    defEn: ["to give something, especially money or goods, to help achieve something", "to be one of the causes of something"],
-    defCn: ["v. 贡献；捐助；投稿", "v. 促成；是…的原因之一"],
-    synonyms: "donate, give, add to, promote",
-    exampleEn: "Everyone contributed to the success of the event.",
-    exampleCn: "每个人都为活动的成功做出了贡献。"
-  },
-  {
-    word: "controversial",
-    phonetic: "/ˌkɒntrəˈvɜːʃl/",
-    defEn: ["causing a lot of angry public discussion and disagreement"],
-    defCn: ["adj. 有争议的；引起争论的"],
-    synonyms: "contentious, disputed, debatable, divisive",
-    exampleEn: "The policy remains highly controversial.",
-    exampleCn: "这项政策仍然极具争议。"
-  },
-  {
-    word: "convince",
-    phonetic: "/kənˈvɪns/",
-    defEn: ["to make somebody believe that something is true", "to persuade somebody to do something"],
-    defCn: ["v. 使确信；使信服", "v. 说服；劝服"],
-    synonyms: "persuade, assure, satisfy, win over",
-    exampleEn: "He convinced me to change my mind.",
-    exampleCn: "他说服我改变了主意。"
-  },
-  {
-    word: "ethic",
-    phonetic: "/ˈeθɪk/",
-    defEn: ["a system of moral principles or rules of behavior", "a guiding philosophy or belief that influences how a person behaves"],
-    defCn: ["n. 伦理；道德规范", "n. 行为准则；价值观"],
-    synonyms: "morality, moral code, principle, values",
-    exampleEn: "The company has a strong work ethic and values teamwork.",
-    exampleCn: "这家公司有很强的职业道德，并且重视团队合作。"
-  }
-];
-
 /* ========== 状态管理 ========== */
-const STORAGE_KEY = "cet6_word_app_v5";
+const STORAGE_KEY = "cet6_word_app_online_v1";
+let state = loadState();
+let WORDS = []; // 初始为空，等待拉取
 
 function loadState() {
   const raw = localStorage.getItem(STORAGE_KEY);
@@ -741,22 +241,56 @@ function loadState() {
     try { return JSON.parse(raw); } catch(e) {}
   }
   return {
-    dailyNew: 20,
-    startDate: todayStr(),
-    rate: 0.9,
-    autoSpeak: true,
-    completed: {},  // 记录哪天点过
-    mastered: []    // 记录哪些词进了熟词区，存单词字符串，如 ["abandon"]
+    dailyNew: 20, startDate: todayStr(), rate: 0.9, autoSpeak: true,
+    completed: {}, mastered: []    
   };
 }
+function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
 
-function saveState() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+/* ========== 获取词库 ========== */
+const JSON_URL = "https://raw.githubusercontent.com/Pleniluner/English-vocabulary/main/json_original/json-sentence/CET6_1.json";
+
+async function fetchWords() {
+  const loadingView = document.getElementById("loadingView");
+  loadingView.style.display = "flex";
+  
+  try {
+    const response = await fetch(JSON_URL);
+    const rawData = await response.json();
+    
+    // 字段映射（适配那个开源词库的格式）
+    WORDS = rawData.map(item => {
+      let cnMeanings = [];
+      if (item.translations && item.translations.length > 0) {
+        cnMeanings = item.translations.map(t => `${t.type ? t.type + '. ' : ''}${t.translation}`);
+      }
+      
+      let exEn = "", exCn = "";
+      if (item.sentences && item.sentences.length > 0) {
+        exEn = item.sentences[0].sentence;
+        exCn = item.sentences[0].translation || "";
+      }
+
+      return {
+        word: item.word || "",
+        phonetic: item.us ? `/${item.us}/` : (item.uk ? `/${item.uk}/` : ""),
+        defCn: cnMeanings,
+        exampleEn: exEn,
+        exampleCn: exCn
+      };
+    }).filter(w => w.word); // 过滤掉空词条
+
+    // 加载完毕，显示界面
+    loadingView.style.display = "none";
+    document.getElementById("card").style.display = "flex";
+    document.getElementById("studyNav").style.display = "flex";
+    showStudy();
+
+  } catch (error) {
+    console.error("加载词库失败:", error);
+    loadingView.innerHTML = `<div style="color:#e57373;">加载词库失败。<br>可能是你的网络暂时无法连接 GitHub。<br><br>请尝试刷新页面，或开启网络加速工具。</div>`;
+  }
 }
-
-let state = loadState();
-if (!state.mastered) state.mastered = [];
-if (state.autoSpeak === undefined) state.autoSpeak = true;
 
 /* ========== 工具函数 ========== */
 function todayStr() {
@@ -770,21 +304,20 @@ function todayGroupIndex() {
   return Math.max(0, daysBetween(state.startDate, todayStr()));
 }
 
-// 获取【未被掌握】的单词
 function getUnmasteredWords() {
+  if (!WORDS.length) return [];
   return WORDS.filter(w => !state.mastered.includes(w.word));
 }
 
-// 获取当天的词（从未掌握的单词里切块）
 function getGroupWords(groupIdx) {
   const activeWords = getUnmasteredWords();
   const start = groupIdx * state.dailyNew;
   return activeWords.slice(start, start + state.dailyNew);
 }
 
-// 总组数（基于未掌握的单词计算）
 function totalGroups() {
-  return Math.ceil(getUnmasteredWords().length / state.dailyNew);
+  const len = getUnmasteredWords().length;
+  return Math.ceil(len / state.dailyNew);
 }
 
 function dateOfGroup(idx) {
@@ -836,16 +369,19 @@ function hideAll() {
 }
 
 function showStudy() {
+  if (!WORDS.length) return; // 还没加载完就不切
   hideAll();
   studyView.classList.remove("hidden");
   renderStudy();
 }
 function showList() {
+  if (!WORDS.length) return;
   hideAll();
   listView.classList.remove("hidden");
   renderList();
 }
 function showMastered() {
+  if (!WORDS.length) return;
   hideAll();
   masteredView.classList.remove("hidden");
   renderMasteredList();
@@ -868,7 +404,7 @@ function renderStudy(auto = true) {
     document.getElementById("dayLabel").textContent = "当前组已学完";
     document.getElementById("word").textContent = "🎉";
     document.getElementById("phonetic").textContent = "";
-    document.getElementById("details").innerHTML = '<div class="section"><div class="defCn">今天的单词已经学完啦（或者你已把它们都放进熟词区了）。</div></div>';
+    document.getElementById("details").innerHTML = '<div class="section"><div class="defCn">今天的单词已经学完啦！</div></div>';
     document.getElementById("prevBtn").disabled = true;
     document.getElementById("nextBtn").disabled = true;
     return;
@@ -881,13 +417,15 @@ function renderStudy(auto = true) {
 
   const w = words[currentIndex];
   document.getElementById("word").textContent = w.word;
-  document.getElementById("phonetic").textContent = w.phonetic;
+  document.getElementById("phonetic").textContent = w.phonetic || "";
 
-  document.getElementById("defEn").innerHTML = w.defEn.map((d, i) => `<div class="def-en">${i + 1}. ${d}</div>`).join("");
-  document.getElementById("defCn").innerHTML = w.defCn.map((d, i) => `<div class="def-cn">${i + 1}. ${d}</div>`).join("");
-  document.getElementById("synonyms").textContent = w.synonyms;
-  document.getElementById("exampleEn").textContent = w.exampleEn;
-  document.getElementById("exampleCn").textContent = w.exampleCn;
+  // 如果没有中文释义，显示默认提示
+  document.getElementById("defCn").innerHTML = (w.defCn && w.defCn.length > 0) 
+    ? w.defCn.map((d, i) => `<div class="def-cn">${i + 1}. ${d}</div>`).join("")
+    : '<div class="def-cn">暂无中文释义</div>';
+    
+  document.getElementById("exampleEn").textContent = w.exampleEn || "";
+  document.getElementById("exampleCn").textContent = w.exampleCn || "";
 
   document.getElementById("card").classList.remove("revealed");
   document.getElementById("prevBtn").disabled = currentIndex === 0;
@@ -915,7 +453,6 @@ function nextWord() {
   if (currentIndex < words.length - 1) { currentIndex++; renderStudy(true); }
 }
 
-// 标为熟词
 function markMastered() {
   const word = document.getElementById("word").textContent;
   if (!word || word === "🎉") return;
@@ -925,15 +462,14 @@ function markMastered() {
     saveState();
   }
   
-  // 把当前词移出后，重绘。如果当前页空了，索引会减一
   const words = getGroupWords(currentGroup);
   if (currentIndex >= words.length) {
     currentIndex = Math.max(0, words.length - 1);
   }
-  renderStudy(false); // 移走时不发声
+  renderStudy(false);
 }
 
-/* ========== 分组页 ========== */
+/* ========== 列表页 ========== */
 function renderList() {
   const container = document.getElementById("groupList");
   container.innerHTML = "";
@@ -1015,7 +551,9 @@ function resetProgress() {
 }
 
 /* ========== 启动 ========== */
-showStudy();
+if (!state.mastered) state.mastered = [];
+if (state.autoSpeak === undefined) state.autoSpeak = true;
+fetchWords(); // 立即开始拉取词库
 </script>
 </body>
 </html>
