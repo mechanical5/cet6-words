@@ -141,15 +141,25 @@
   </div>
 </div>
 
-<!-- 这一行就是核心：把刚才建好的词库文件引进来 -->
+<!-- 引入你的词库 -->
 <script src="words.js"></script>
 
 <script>
 /* ========== 状态管理 ========== */
-const STORAGE_KEY = "cet6_word_app_split_v1";
+const STORAGE_KEY = "cet6_word_app_final_v1";
 let state = loadState();
-// 这里的 WORDS 直接读取 words.js 里的 MY_WORDS
-let WORDS = (typeof MY_WORDS !== 'undefined') ? MY_WORDS : []; 
+let WORDS = [];
+
+// 核心安全检查：确保能读到你 words.js 里的 MY_WORDS
+try {
+  if (typeof MY_WORDS !== 'undefined') {
+    WORDS = MY_WORDS;
+  } else {
+    console.error("未能读取到 MY_WORDS，请检查 words.js");
+  }
+} catch (e) {
+  console.error("加载词库报错", e);
+}
 
 function loadState() {
   const raw = localStorage.getItem(STORAGE_KEY);
@@ -206,8 +216,10 @@ function showSettings() { hideAll(); settingsView.classList.remove("hidden"); re
 let currentGroup = 0, currentIndex = 0;
 function renderStudy(auto = true) {
   if (WORDS.length === 0) {
+    document.getElementById("dayLabel").textContent = "加载失败";
     document.getElementById("word").textContent = "无词库";
-    document.getElementById("details").innerHTML = '<div class="section"><div class="defCn">请检查 words.js 是否存在且格式正确。</div></div>';
+    document.getElementById("phonetic").textContent = "";
+    document.getElementById("details").innerHTML = '<div class="section"><div class="defCn">请确认 words.js 文件已正确保存，且第一行包含 const MY_WORDS = [</div></div>';
     return;
   }
   currentGroup = todayGroupIndex();
@@ -239,7 +251,7 @@ function prevWord() { if (currentIndex > 0) { currentIndex--; renderStudy(true);
 function nextWord() { const words = getGroupWords(currentGroup); if (currentIndex < words.length - 1) { currentIndex++; renderStudy(true); } }
 function markMastered() {
   const word = document.getElementById("word").textContent;
-  if (!word || word === "🎉") return;
+  if (!word || word === "🎉" || word === "无词库") return;
   if (!state.mastered.includes(word)) { state.mastered.push(word); saveState(); }
   const words = getGroupWords(currentGroup);
   if (currentIndex >= words.length) currentIndex = Math.max(0, words.length - 1);
