@@ -25,6 +25,18 @@
   }
   .topbar button:hover { color: #222; }
 
+  /* 进度条样式 */
+  .progress-container {
+    display: flex; flex-direction: column; align-items: flex-end; gap: 4px;
+  }
+  .progress-text { font-size: 12px; color: #999; }
+  .progress-bar-bg {
+    width: 80px; height: 4px; background: #eee; border-radius: 2px; overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%; background: #4caf50; width: 0%; transition: width .3s;
+  }
+
   .card {
     flex: 1; display: flex; flex-direction: column;
     align-items: center; justify-content: center;
@@ -53,9 +65,7 @@
 
   .section { margin-bottom: 18px; }
   .section-title { font-size: 12px; color: #bbb; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
-  .def-en { font-size: 15px; color: #555; line-height: 1.55; margin-bottom: 4px; }
   .def-cn { font-size: 16px; color: #222; line-height: 1.55; margin-bottom: 4px; }
-  .synonyms { font-size: 15px; color: #666; line-height: 1.6; }
   .example-en { font-size: 15px; color: #333; line-height: 1.6; font-style: italic; margin-bottom: 4px; }
   .example-cn { font-size: 14px; color: #999; line-height: 1.5; }
 
@@ -129,8 +139,14 @@
 <div class="app">
 
   <div id="studyView" style="display:flex; flex-direction:column; height:100%;">
+    
+    <!-- 顶栏：包含天数和总进度 -->
     <div class="topbar">
       <span id="dayLabel"></span>
+      <div class="progress-container" id="progressBox">
+        <div class="progress-text" id="progressText">0 / 0</div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressBar"></div></div>
+      </div>
       <span class="right">
         <button onclick="showList()">分组</button>
         <button onclick="showMastered()">熟词区</button>
@@ -139,7 +155,7 @@
     </div>
     
     <div id="loadingView" class="loading" style="display:none; flex:1; align-items:center; justify-content:center;">
-      <div>正在从 GitHub 获取海量词库...<br><br>（国内网络可能稍慢，请耐心等待几秒）</div>
+      <div>正在从 GitHub 获取海量词库...<br><br>（如果卡住，将自动切换本地备用词库）</div>
     </div>
 
     <div class="card" id="card" onclick="reveal()" style="display:none;">
@@ -230,10 +246,19 @@
 </div>
 
 <script>
+/* ========== 本地备用词库（当在线词库加载失败时使用） ========== */
+const FALLBACK_WORDS = [
+  { word: "ethic", phonetic: "/ˈeθɪk/", defCn: ["n. 伦理；道德规范", "n. 行为准则；价值观"], exampleEn: "The company has a strong work ethic and values teamwork.", exampleCn: "这家公司有很强的职业道德，并且重视团队合作。" },
+  { word: "abandon", phonetic: "/əˈbændən/", defCn: ["v. 抛弃；遗弃", "v. 放弃；中止"], exampleEn: "He abandoned his plan to study abroad.", exampleCn: "他放弃了出国留学的计划。" },
+  { word: "absorb", phonetic: "/əbˈzɔːb/", defCn: ["v. 吸收（液体、气体等）", "v. 理解；掌握（信息）"], exampleEn: "Plants absorb carbon dioxide from the air.", exampleCn: "植物从空气中吸收二氧化碳。" },
+  { word: "abstract", phonetic: "/ˈæbstrækt/", defCn: ["adj. 抽象的；理论上的", "n. 摘要；概要"], exampleEn: "Beauty is an abstract concept that is hard to define.", exampleCn: "美是一个难以定义的抽象概念。" },
+  { word: "abundant", phonetic: "/əˈbʌndənt/", defCn: ["adj. 丰富的；充裕的"], exampleEn: "The region has abundant natural resources.", exampleCn: "该地区拥有丰富的自然资源。" }
+];
+
 /* ========== 状态管理 ========== */
-const STORAGE_KEY = "cet6_word_app_online_v1";
+const STORAGE_KEY = "cet6_word_app_online_v2";
 let state = loadState();
-let WORDS = []; // 初始为空，等待拉取
+let WORDS = []; 
 
 function loadState() {
   const raw = localStorage.getItem(STORAGE_KEY);
@@ -255,22 +280,25 @@ async function fetchWords() {
   loadingView.style.display = "flex";
   
   try {
-    const response = await fetch(JSON_URL);
+    // 设置超时，如果 6 秒没拉下来就触发 catch
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 6000);
+
+    const response = await fetch(JSON_URL, { signal: controller.signal });
+    clearTimeout(timeoutId);
+    
     const rawData = await response.json();
     
-    // 字段映射（适配那个开源词库的格式）
     WORDS = rawData.map(item => {
       let cnMeanings = [];
       if (item.translations && item.translations.length > 0) {
         cnMeanings = item.translations.map(t => `${t.type ? t.type + '. ' : ''}${t.translation}`);
       }
-      
       let exEn = "", exCn = "";
       if (item.sentences && item.sentences.length > 0) {
         exEn = item.sentences[0].sentence;
         exCn = item.sentences[0].translation || "";
       }
-
       return {
         word: item.word || "",
         phonetic: item.us ? `/${item.us}/` : (item.uk ? `/${item.uk}/` : ""),
@@ -278,18 +306,18 @@ async function fetchWords() {
         exampleEn: exEn,
         exampleCn: exCn
       };
-    }).filter(w => w.word); // 过滤掉空词条
-
-    // 加载完毕，显示界面
-    loadingView.style.display = "none";
-    document.getElementById("card").style.display = "flex";
-    document.getElementById("studyNav").style.display = "flex";
-    showStudy();
+    }).filter(w => w.word);
 
   } catch (error) {
-    console.error("加载词库失败:", error);
-    loadingView.innerHTML = `<div style="color:#e57373;">加载词库失败。<br>可能是你的网络暂时无法连接 GitHub。<br><br>请尝试刷新页面，或开启网络加速工具。</div>`;
+    console.warn("在线词库加载失败，使用本地备用词库", error);
+    WORDS = FALLBACK_WORDS; // 失败切换备用
   }
+
+  // 加载完毕，显示界面
+  loadingView.style.display = "none";
+  document.getElementById("card").style.display = "flex";
+  document.getElementById("studyNav").style.display = "flex";
+  showStudy();
 }
 
 /* ========== 工具函数 ========== */
@@ -324,6 +352,16 @@ function dateOfGroup(idx) {
   const d = new Date(state.startDate + "T00:00:00");
   d.setDate(d.getDate() + idx);
   return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+}
+
+/* ========== 进度条更新 ========== */
+function updateProgress() {
+  const total = WORDS.length;
+  const masteredCount = state.mastered.length;
+  const percent = total === 0 ? 0 : Math.round((masteredCount / total) * 100);
+  
+  document.getElementById("progressText").textContent = `${masteredCount} / ${total}`;
+  document.getElementById("progressBar").style.width = `${percent}%`;
 }
 
 /* ========== 发音 ========== */
@@ -369,9 +407,10 @@ function hideAll() {
 }
 
 function showStudy() {
-  if (!WORDS.length) return; // 还没加载完就不切
+  if (!WORDS.length) return;
   hideAll();
   studyView.classList.remove("hidden");
+  updateProgress();
   renderStudy();
 }
 function showList() {
@@ -419,7 +458,6 @@ function renderStudy(auto = true) {
   document.getElementById("word").textContent = w.word;
   document.getElementById("phonetic").textContent = w.phonetic || "";
 
-  // 如果没有中文释义，显示默认提示
   document.getElementById("defCn").innerHTML = (w.defCn && w.defCn.length > 0) 
     ? w.defCn.map((d, i) => `<div class="def-cn">${i + 1}. ${d}</div>`).join("")
     : '<div class="def-cn">暂无中文释义</div>';
@@ -466,6 +504,7 @@ function markMastered() {
   if (currentIndex >= words.length) {
     currentIndex = Math.max(0, words.length - 1);
   }
+  updateProgress();
   renderStudy(false);
 }
 
@@ -526,6 +565,7 @@ function renderMasteredList() {
 function unmaster(word) {
   state.mastered = state.mastered.filter(w => w !== word);
   saveState();
+  updateProgress();
   renderMasteredList();
 }
 
